@@ -2,8 +2,7 @@
 ============================================================================
 Name : 20.c
 Author : Patti Sarath
-Description : Write a C, Ansi-style program to perform Record locking.
-                       a. Implement write lock
+Description : Find out the priority of your running program. Modify the priority with nice command.
 Date: 26th Aug, 2024.
 ============================================================================
 */
