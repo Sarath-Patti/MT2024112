@@ -32,7 +32,7 @@ void print_policy(int policy) {
 
 void set_policy(int policy) {
     struct sched_param sched_param;
-    sched_param.sched_priority = sched_get_priority_max(policy); // Use max priority for the policy
+    sched_param.sched_priority = sched_get_priority_max(policy); 
 
     if (sched_setscheduler(0, policy, &sched_param) == -1) {
         perror("sched_setscheduler");
@@ -46,22 +46,18 @@ void set_policy(int policy) {
 int main() {
     int current_policy;
     
-    // Get the current scheduling policy
     current_policy = sched_getscheduler(0);
     if (current_policy == -1) {
         perror("sched_getscheduler");
         exit(EXIT_FAILURE);
     }
 
-    // Print the current scheduling policy
     printf("Before changing policy:\n");
     print_policy(current_policy);
 
-    // Change to SCHED_FIFO
     printf("Changing to SCHED_FIFO:\n");
     set_policy(SCHED_FIFO);
 
-    // Get and print the new scheduling policy
     current_policy = sched_getscheduler(0);
     if (current_policy == -1) {
         perror("sched_getscheduler");
@@ -69,11 +65,9 @@ int main() {
     }
     print_policy(current_policy);
 
-    // Change to SCHED_RR
     printf("Changing to SCHED_RR:\n");
     set_policy(SCHED_RR);
 
-    // Get and print the new scheduling policy
     current_policy = sched_getscheduler(0);
     if (current_policy == -1) {
         perror("sched_getscheduler");
@@ -85,10 +79,13 @@ int main() {
 }
 
 /**
-Real-time priority ranges for SCHED_FIFO:
-Max Priority: 99
-Min Priority: 1
-Real-time priority ranges for SCHED_RR:
-Max Priority: 99
-Min Priority: 1
+[sudo] password for sarath-patti: 
+Before changing policy:
+Current scheduling policy: SCHED_OTHER
+Changing to SCHED_FIFO:
+Scheduling policy changed to Current scheduling policy: SCHED_FIFO
+Current scheduling policy: SCHED_FIFO
+Changing to SCHED_RR:
+Scheduling policy changed to Current scheduling policy: SCHED_RR
+Current scheduling policy: SCHED_RR
 **/
