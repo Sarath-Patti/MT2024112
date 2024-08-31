@@ -24,6 +24,12 @@ int main() {
     printf("Symbolic link created: %s -> %s\n", linkpath, target);
     return 0;
 }
+
+/**
+
+ln -s "example.txt" symlink_name
+
+
 /**
 
 Symbolic link created: symlink_name -> example.txt
